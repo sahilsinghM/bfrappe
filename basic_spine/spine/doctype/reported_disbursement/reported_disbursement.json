@@ -1,0 +1,336 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:disb_id",
+ "creation": "2026-06-12 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "identity_section",
+  "disb_id",
+  "basic_case_id",
+  "tranche_no",
+  "team",
+  "col_id1",
+  "sourcing_agent_code",
+  "agent_rm_code",
+  "fulfilment_rm_code",
+  "col_id2",
+  "customer_name",
+  "pincode",
+  "district",
+  "lender_section",
+  "lender_raw_label",
+  "lender_entity",
+  "col_lender",
+  "lender_app_id_raw",
+  "lender_app_id_norm",
+  "lan_raw",
+  "lan_norm",
+  "lifecycle_section",
+  "application_date",
+  "login_date",
+  "login_amt",
+  "col_life1",
+  "sanction_date",
+  "sanction_amt",
+  "col_life2",
+  "disb_date",
+  "disb_created_on",
+  "disb_amt",
+  "col_life3",
+  "console_status",
+  "console_link",
+  "collection_section",
+  "collection_state",
+  "sla_trigger_date",
+  "expected_in_mis_by",
+  "col_coll1",
+  "matched_mis_line",
+  "match_method",
+  "match_confidence",
+  "overdue_days"
+ ],
+ "fields": [
+  {
+   "fieldname": "identity_section",
+   "fieldtype": "Section Break",
+   "label": "Identity & Source"
+  },
+  {
+   "description": "Console disbursement id, e.g. B00UMFG_D3",
+   "fieldname": "disb_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Disb ID",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "basic_case_id",
+   "fieldtype": "Data",
+   "label": "Basic Case ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tranche_no",
+   "fieldtype": "Int",
+   "label": "Tranche No",
+   "read_only": 1
+  },
+  {
+   "fieldname": "team",
+   "fieldtype": "Data",
+   "label": "Team"
+  },
+  {
+   "fieldname": "col_id1",
+   "fieldtype": "Column Break",
+   "label": "Col Id1"
+  },
+  {
+   "fieldname": "sourcing_agent_code",
+   "fieldtype": "Data",
+   "label": "Sourcing Agent Code"
+  },
+  {
+   "fieldname": "agent_rm_code",
+   "fieldtype": "Data",
+   "label": "Agent RM Code"
+  },
+  {
+   "fieldname": "fulfilment_rm_code",
+   "fieldtype": "Data",
+   "label": "Fulfilment RM Code"
+  },
+  {
+   "fieldname": "col_id2",
+   "fieldtype": "Column Break",
+   "label": "Col Id2"
+  },
+  {
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Customer Name"
+  },
+  {
+   "fieldname": "pincode",
+   "fieldtype": "Data",
+   "label": "Pincode"
+  },
+  {
+   "fieldname": "district",
+   "fieldtype": "Data",
+   "label": "District"
+  },
+  {
+   "fieldname": "lender_section",
+   "fieldtype": "Section Break",
+   "label": "Lender Linkage"
+  },
+  {
+   "description": "Lender label exactly as in the export",
+   "fieldname": "lender_raw_label",
+   "fieldtype": "Data",
+   "label": "Lender Raw Label"
+  },
+  {
+   "description": "Resolved via Lender Alias; blank if unresolved",
+   "fieldname": "lender_entity",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Lender Entity",
+   "options": "Lender Entity"
+  },
+  {
+   "fieldname": "col_lender",
+   "fieldtype": "Column Break",
+   "label": "Col Lender"
+  },
+  {
+   "fieldname": "lender_app_id_raw",
+   "fieldtype": "Data",
+   "label": "Lender App ID (raw)"
+  },
+  {
+   "fieldname": "lender_app_id_norm",
+   "fieldtype": "Data",
+   "label": "Lender App ID (normalized)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "lan_raw",
+   "fieldtype": "Data",
+   "label": "LAN (raw)"
+  },
+  {
+   "fieldname": "lan_norm",
+   "fieldtype": "Data",
+   "label": "LAN (normalized)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "lifecycle_section",
+   "fieldtype": "Section Break",
+   "label": "Lifecycle Dates & Amounts"
+  },
+  {
+   "fieldname": "application_date",
+   "fieldtype": "Date",
+   "label": "Application Date"
+  },
+  {
+   "fieldname": "login_date",
+   "fieldtype": "Date",
+   "label": "Login Date"
+  },
+  {
+   "fieldname": "login_amt",
+   "fieldtype": "Currency",
+   "label": "Login Amt"
+  },
+  {
+   "fieldname": "col_life1",
+   "fieldtype": "Column Break",
+   "label": "Col Life1"
+  },
+  {
+   "fieldname": "sanction_date",
+   "fieldtype": "Date",
+   "label": "Sanction Date"
+  },
+  {
+   "fieldname": "sanction_amt",
+   "fieldtype": "Currency",
+   "label": "Sanction Amt"
+  },
+  {
+   "fieldname": "col_life2",
+   "fieldtype": "Column Break",
+   "label": "Col Life2"
+  },
+  {
+   "fieldname": "disb_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Disb Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "disb_created_on",
+   "fieldtype": "Date",
+   "label": "Disb Created On"
+  },
+  {
+   "fieldname": "disb_amt",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Disb Amt",
+   "reqd": 1
+  },
+  {
+   "fieldname": "col_life3",
+   "fieldtype": "Column Break",
+   "label": "Col Life3"
+  },
+  {
+   "fieldname": "console_status",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Console Status",
+   "options": "\nVerifiedByBasic\nCancelled\nRejectedByBasic"
+  },
+  {
+   "fieldname": "console_link",
+   "fieldtype": "Data",
+   "label": "Console Link"
+  },
+  {
+   "fieldname": "collection_section",
+   "fieldtype": "Section Break",
+   "label": "Collection Ledger"
+  },
+  {
+   "default": "Reported",
+   "fieldname": "collection_state",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Collection State",
+   "options": "Reported\nVerified\nAwaitingMIS\nMatched\nClaimedPostMIS\nOverdue\nDisputed\nWrittenOff"
+  },
+  {
+   "description": "Prototype: = disb_date unless overridden",
+   "fieldname": "sla_trigger_date",
+   "fieldtype": "Date",
+   "label": "Sla Trigger Date"
+  },
+  {
+   "fieldname": "expected_in_mis_by",
+   "fieldtype": "Date",
+   "label": "Expected In Mis By",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_coll1",
+   "fieldtype": "Column Break",
+   "label": "Col Coll1"
+  },
+  {
+   "fieldname": "matched_mis_line",
+   "fieldtype": "Link",
+   "label": "Matched Mis Line",
+   "options": "MIS Line",
+   "read_only": 1
+  },
+  {
+   "fieldname": "match_method",
+   "fieldtype": "Data",
+   "label": "Match Method",
+   "read_only": 1
+  },
+  {
+   "fieldname": "match_confidence",
+   "fieldtype": "Select",
+   "label": "Match Confidence",
+   "options": "\nA\nA-\nB\nC\nNone",
+   "read_only": 1
+  },
+  {
+   "fieldname": "overdue_days",
+   "fieldtype": "Int",
+   "label": "Overdue Days",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 0,
+ "links": [],
+ "modified": "2026-06-12 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Spine",
+ "name": "Reported Disbursement",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "customer_name"
+}

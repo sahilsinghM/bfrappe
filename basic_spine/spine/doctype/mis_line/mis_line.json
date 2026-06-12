@@ -1,0 +1,278 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-06-12 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "batch",
+  "line_fingerprint",
+  "ids_section",
+  "lan_raw",
+  "lan_norm",
+  "col_ids",
+  "app_id_raw",
+  "app_id_norm",
+  "case_section",
+  "customer_name",
+  "mobile",
+  "product_label",
+  "mapped_product",
+  "col_case",
+  "branch_label",
+  "state",
+  "invoice_ref",
+  "amounts_section",
+  "disb_date",
+  "sanction_amt",
+  "disb_amt",
+  "payin_amt",
+  "col_amt",
+  "subvention_amt",
+  "cross_sell_amt",
+  "slab_pct",
+  "match_section",
+  "match_state",
+  "matched_disbursement",
+  "match_method",
+  "col_match",
+  "match_confidence",
+  "needs_review",
+  "norm_rescued",
+  "candidate_json"
+ ],
+ "fields": [
+  {
+   "fieldname": "batch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Batch",
+   "options": "MIS Batch",
+   "reqd": 1
+  },
+  {
+   "description": "sha1 of norm(LAN)|norm(app)|disb_amt|disb_date|norm(name); dedups drip-feed re-sends",
+   "fieldname": "line_fingerprint",
+   "fieldtype": "Data",
+   "label": "Line Fingerprint",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "ids_section",
+   "fieldtype": "Section Break",
+   "label": "Identifiers"
+  },
+  {
+   "fieldname": "lan_raw",
+   "fieldtype": "Data",
+   "label": "LAN (raw)"
+  },
+  {
+   "fieldname": "lan_norm",
+   "fieldtype": "Data",
+   "label": "LAN (normalized)",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "col_ids",
+   "fieldtype": "Column Break",
+   "label": "Col Ids"
+  },
+  {
+   "fieldname": "app_id_raw",
+   "fieldtype": "Data",
+   "label": "App ID (raw)"
+  },
+  {
+   "fieldname": "app_id_norm",
+   "fieldtype": "Data",
+   "label": "App ID (normalized)",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "case_section",
+   "fieldtype": "Section Break",
+   "label": "Case Details"
+  },
+  {
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Customer Name"
+  },
+  {
+   "fieldname": "mobile",
+   "fieldtype": "Data",
+   "label": "Mobile"
+  },
+  {
+   "fieldname": "product_label",
+   "fieldtype": "Data",
+   "label": "Product Label"
+  },
+  {
+   "fieldname": "mapped_product",
+   "fieldtype": "Link",
+   "label": "Mapped Product",
+   "options": "Product"
+  },
+  {
+   "fieldname": "col_case",
+   "fieldtype": "Column Break",
+   "label": "Col Case"
+  },
+  {
+   "fieldname": "branch_label",
+   "fieldtype": "Data",
+   "label": "Branch Label"
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Data",
+   "label": "State"
+  },
+  {
+   "fieldname": "invoice_ref",
+   "fieldtype": "Data",
+   "label": "Invoice Ref"
+  },
+  {
+   "fieldname": "amounts_section",
+   "fieldtype": "Section Break",
+   "label": "Amounts & Dates"
+  },
+  {
+   "description": "Not in the original spec's field list, but required by fuzzy matching (\u00b17 day rule) and the line fingerprint",
+   "fieldname": "disb_date",
+   "fieldtype": "Date",
+   "label": "Disb Date"
+  },
+  {
+   "fieldname": "sanction_amt",
+   "fieldtype": "Currency",
+   "label": "Sanction Amt"
+  },
+  {
+   "fieldname": "disb_amt",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Disb Amt"
+  },
+  {
+   "fieldname": "payin_amt",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Payin Amt"
+  },
+  {
+   "fieldname": "col_amt",
+   "fieldtype": "Column Break",
+   "label": "Col Amt"
+  },
+  {
+   "fieldname": "subvention_amt",
+   "fieldtype": "Currency",
+   "label": "Subvention Amt"
+  },
+  {
+   "fieldname": "cross_sell_amt",
+   "fieldtype": "Currency",
+   "label": "Cross Sell Amt"
+  },
+  {
+   "fieldname": "slab_pct",
+   "fieldtype": "Float",
+   "label": "Slab Pct",
+   "precision": "4"
+  },
+  {
+   "fieldname": "match_section",
+   "fieldtype": "Section Break",
+   "label": "Matching"
+  },
+  {
+   "default": "Unmatched",
+   "fieldname": "match_state",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Match State",
+   "options": "Unmatched\nAutoMatched\nManuallyClaimed\nDuplicate\nRejected"
+  },
+  {
+   "fieldname": "matched_disbursement",
+   "fieldtype": "Link",
+   "label": "Matched Disbursement",
+   "options": "Reported Disbursement"
+  },
+  {
+   "fieldname": "match_method",
+   "fieldtype": "Data",
+   "label": "Match Method"
+  },
+  {
+   "fieldname": "col_match",
+   "fieldtype": "Column Break",
+   "label": "Col Match"
+  },
+  {
+   "fieldname": "match_confidence",
+   "fieldtype": "Select",
+   "label": "Match Confidence",
+   "options": "\nA\nA-\nB\nC\nNone"
+  },
+  {
+   "default": "0",
+   "description": "Set on confidence-B auto-commits; review queue",
+   "fieldname": "needs_review",
+   "fieldtype": "Check",
+   "label": "Needs Review"
+  },
+  {
+   "default": "0",
+   "description": "Match succeeded on normalized ids but raw ids differed",
+   "fieldname": "norm_rescued",
+   "fieldtype": "Check",
+   "label": "Normalization Rescued"
+  },
+  {
+   "description": "Top-3 candidate disb_ids for the manual claim queue (confidence C)",
+   "fieldname": "candidate_json",
+   "fieldtype": "Long Text",
+   "label": "Candidate Json",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 0,
+ "links": [],
+ "modified": "2026-06-12 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Spine",
+ "name": "MIS Line",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "customer_name"
+}

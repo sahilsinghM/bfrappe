@@ -1,0 +1,11 @@
+# Real BASIC exports / lender MIS files contain PII — never commit them.
+prototype_data/
+
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+*.swp
+.DS_Store
+node_modules/
+basic_spine/public/dist/

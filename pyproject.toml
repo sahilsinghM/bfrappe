@@ -1,0 +1,20 @@
+[project]
+name = "basic_spine"
+authors = [
+    { name = "BASIC Home Loan", email = "sahilsingh7867@gmail.com" }
+]
+description = "BASIC money spine prototype: disbursement -> MIS -> matching -> collection ledger"
+requires-python = ">=3.10"
+readme = "README.md"
+dynamic = ["version"]
+dependencies = [
+    "rapidfuzz",
+    "openpyxl",
+    "pandas",
+]
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.bench.dev-dependencies]

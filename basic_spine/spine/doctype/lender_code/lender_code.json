@@ -1,0 +1,93 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:code",
+ "creation": "2026-06-12 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "code",
+  "lender_entity",
+  "product",
+  "city_scope",
+  "payin_basis",
+  "active_from",
+  "active_to"
+ ],
+ "fields": [
+  {
+   "fieldname": "code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Code",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "lender_entity",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Lender Entity",
+   "options": "Lender Entity",
+   "reqd": 1
+  },
+  {
+   "fieldname": "product",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Product",
+   "options": "Product"
+  },
+  {
+   "description": "Blank = all cities",
+   "fieldname": "city_scope",
+   "fieldtype": "Data",
+   "label": "City Scope"
+  },
+  {
+   "description": "Gross = payout on full sanction even if partly disbursed; Net = proportional to disbursed",
+   "fieldname": "payin_basis",
+   "fieldtype": "Select",
+   "label": "Payin Basis",
+   "options": "\nGross\nNet"
+  },
+  {
+   "fieldname": "active_from",
+   "fieldtype": "Date",
+   "label": "Active From"
+  },
+  {
+   "fieldname": "active_to",
+   "fieldtype": "Date",
+   "label": "Active To"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 0,
+ "links": [],
+ "modified": "2026-06-12 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Spine",
+ "name": "Lender Code",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

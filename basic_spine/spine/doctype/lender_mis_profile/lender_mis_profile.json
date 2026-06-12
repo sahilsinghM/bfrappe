@@ -1,0 +1,108 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:profile_name",
+ "creation": "2026-06-12 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "profile_name",
+  "lender_entity",
+  "cycle_type",
+  "window_start_day",
+  "window_end_day",
+  "expected_delivery_day",
+  "grace_days",
+  "data_sheet",
+  "column_map"
+ ],
+ "fields": [
+  {
+   "fieldname": "profile_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Profile Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "lender_entity",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Lender Entity",
+   "options": "Lender Entity",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cycle_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Cycle Type",
+   "options": "\nMonthly-Window\nWeekly\nTen-Day\nAdhoc"
+  },
+  {
+   "description": "For monthly-window cycles, e.g. 15",
+   "fieldname": "window_start_day",
+   "fieldtype": "Int",
+   "label": "Window Start Day"
+  },
+  {
+   "description": "For monthly-window cycles, e.g. 15 (of next month)",
+   "fieldname": "window_end_day",
+   "fieldtype": "Int",
+   "label": "Window End Day"
+  },
+  {
+   "description": "Day of month the MIS usually arrives, e.g. 20",
+   "fieldname": "expected_delivery_day",
+   "fieldtype": "Int",
+   "label": "Expected Delivery Day"
+  },
+  {
+   "default": "5",
+   "fieldname": "grace_days",
+   "fieldtype": "Int",
+   "label": "Grace Days"
+  },
+  {
+   "description": "Sheet name holding the data rows; blank = first sheet",
+   "fieldname": "data_sheet",
+   "fieldtype": "Data",
+   "label": "Data Sheet"
+  },
+  {
+   "fieldname": "column_map",
+   "fieldtype": "Table",
+   "label": "MIS Column Map",
+   "options": "Lender MIS Column Map"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 0,
+ "links": [],
+ "modified": "2026-06-12 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Spine",
+ "name": "Lender MIS Profile",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
