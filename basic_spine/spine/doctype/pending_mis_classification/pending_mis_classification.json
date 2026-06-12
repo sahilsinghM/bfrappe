@@ -1,0 +1,98 @@
+{
+ "actions": [
+  {
+   "action": "classify_and_import",
+   "action_label": "Classify & Import",
+   "action_type": "Server Action"
+  }
+ ],
+ "allow_rename": 0,
+ "autoname": "autoincrement",
+ "creation": "2026-06-13 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "received_on",
+  "from_email",
+  "subject",
+  "attachment_filename",
+  "attachment",
+  "assigned_profile",
+  "status"
+ ],
+ "fields": [
+  {
+   "fieldname": "received_on",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Received On",
+   "reqd": 1
+  },
+  {
+   "fieldname": "from_email",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "From Email"
+  },
+  {
+   "fieldname": "subject",
+   "fieldtype": "Data",
+   "label": "Subject"
+  },
+  {
+   "fieldname": "attachment_filename",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Attachment Filename"
+  },
+  {
+   "fieldname": "attachment",
+   "fieldtype": "Attach",
+   "label": "Attachment"
+  },
+  {
+   "fieldname": "assigned_profile",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Assigned Profile",
+   "options": "Lender MIS Profile"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Pending\nClassified\nIgnored"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 0,
+ "links": [],
+ "modified": "2026-06-13 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Spine",
+ "name": "Pending MIS Classification",
+ "naming_rule": "Autoincrement",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

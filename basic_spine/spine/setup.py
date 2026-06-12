@@ -92,6 +92,18 @@ MIS_PROFILES = [
     ("Aditya Birla Monthly", "Aditya Birla Housing Finance", "Monthly-Window", 1, 1, 18, 5, None, []),
 ]
 
+BRANCHES = [
+    # (entity, branch_name, city, state, basic_dsa_code)
+    ("Chola Home Loans", "Chola Central", "Chennai", "Tamil Nadu", "10012282"),
+    ("AU Small Finance Bank", "AU Central", "Jaipur", "Rajasthan", "AVHL00327"),
+]
+
+MIS_PROFILE_ROUTING = [
+    # (profile_name, sender_email_domain, filename_pattern)
+    ("Chola Monthly", "@cholamandalam.com", r"CHOLA.*\.xlsx"),
+    ("AU Monthly", "@aubank.in", r"AU.*\.xlsx"),
+]
+
 CONFIRMATION_PROFILES = [
     ("Chola Home Loans", "Disbursement", "Disbursement memo"),
     ("AU Small Finance Bank", "PDD+OTC-Clear", "PDD + OTC clearance from branch"),
@@ -101,7 +113,7 @@ CONFIRMATION_PROFILES = [
 def seed():
     created = {"Product": 0, "Lender": 0, "Lender Entity": 0, "Lender Alias": 0,
                "LAN Pattern": 0, "Lender Product Map": 0, "Lender MIS Profile": 0,
-               "Lender Confirmation Profile": 0}
+               "Lender Confirmation Profile": 0, "Lender Branch": 0}
 
     for code, desc in PRODUCTS:
         if not frappe.db.exists("Product", code):
@@ -148,6 +160,25 @@ def seed():
                 ],
             }).insert()
             created["Lender MIS Profile"] += 1
+
+    for entity, branch_name, city, state, dsa_code in BRANCHES:
+        if not frappe.db.exists("Lender Branch", {"lender_entity": entity, "branch_name": branch_name}):
+            frappe.get_doc({
+                "doctype": "Lender Branch",
+                "lender_entity": entity,
+                "branch_name": branch_name,
+                "city": city,
+                "state": state,
+                "basic_dsa_code": dsa_code,
+            }).insert()
+            created["Lender Branch"] += 1
+
+    for profile_name, domain, pattern in MIS_PROFILE_ROUTING:
+        if frappe.db.exists("Lender MIS Profile", profile_name):
+            frappe.db.set_value("Lender MIS Profile", profile_name, {
+                "sender_email_domain": domain,
+                "filename_pattern": pattern,
+            })
 
     for entity, trigger, proofs in CONFIRMATION_PROFILES:
         if not frappe.db.exists("Lender Confirmation Profile", {"lender_entity": entity}):

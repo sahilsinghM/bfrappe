@@ -1,17 +1,19 @@
 {
  "actions": [],
- "allow_rename": 0,
- "autoname": "format:LPM-{####}",
- "creation": "2026-06-12 12:00:00.000000",
+ "allow_rename": 1,
+ "autoname": "format:{lender_entity}-{branch_name}",
+ "creation": "2026-06-13 12:00:00.000000",
  "doctype": "DocType",
  "editable_grid": 0,
  "engine": "InnoDB",
  "field_order": [
   "lender_entity",
-  "lender_product_label",
-  "basic_product",
-  "payout_type",
-  "sub_product"
+  "branch_name",
+  "branch_code",
+  "basic_dsa_code",
+  "city",
+  "state",
+  "pincodes_served"
  ],
  "fields": [
   {
@@ -24,42 +26,50 @@
    "reqd": 1
   },
   {
-   "description": "Lender's own label, e.g. \"HE01\", \"ML01\", \"Home Equity\", \"MBL\"",
-   "fieldname": "lender_product_label",
+   "fieldname": "branch_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Lender Product Label",
+   "label": "Branch Name",
    "reqd": 1
   },
   {
-   "fieldname": "basic_product",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Basic Product",
-   "options": "Product",
-   "reqd": 1
-  },
-  {
-   "fieldname": "payout_type",
-   "fieldtype": "Select",
-   "in_list_view": 1,
-   "label": "Payout Type",
-   "options": "\nNet\nGross"
-  },
-  {
-   "description": "Lender-specific variant e.g. SME LAP, Connector HL",
-   "fieldname": "sub_product",
+   "description": "Lender's internal branch code",
+   "fieldname": "branch_code",
    "fieldtype": "Data",
-   "label": "Sub Product"
+   "label": "Branch Code"
+  },
+  {
+   "description": "BASIC's DSA/channel code at this branch",
+   "fieldname": "basic_dsa_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "BASIC DSA Code"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "City"
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Data",
+   "label": "State"
+  },
+  {
+   "fieldname": "pincodes_served",
+   "fieldtype": "Table",
+   "label": "Pincodes Served",
+   "options": "Lender Branch Pincode"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 0,
  "links": [],
- "modified": "2026-06-12 12:00:00.000000",
+ "modified": "2026-06-13 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "Spine",
- "name": "Lender Product Map",
+ "name": "Lender Branch",
  "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [

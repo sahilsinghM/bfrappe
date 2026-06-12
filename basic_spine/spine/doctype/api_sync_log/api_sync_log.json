@@ -1,0 +1,87 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "autoincrement",
+ "creation": "2026-06-13 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "sync_started_at",
+  "sync_completed_at",
+  "records_pulled",
+  "records_created",
+  "records_updated",
+  "status",
+  "error"
+ ],
+ "fields": [
+  {
+   "fieldname": "sync_started_at",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Sync Started At",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sync_completed_at",
+   "fieldtype": "Datetime",
+   "label": "Sync Completed At"
+  },
+  {
+   "fieldname": "records_pulled",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Records Pulled"
+  },
+  {
+   "fieldname": "records_created",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Records Created"
+  },
+  {
+   "fieldname": "records_updated",
+   "fieldtype": "Int",
+   "label": "Records Updated"
+  },
+  {
+   "default": "Running",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Running\nSuccess\nFailed"
+  },
+  {
+   "fieldname": "error",
+   "fieldtype": "Long Text",
+   "label": "Error"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 0,
+ "links": [],
+ "modified": "2026-06-13 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Spine",
+ "name": "API Sync Log",
+ "naming_rule": "Autoincrement",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

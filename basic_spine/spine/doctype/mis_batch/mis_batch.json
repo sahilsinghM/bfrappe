@@ -13,7 +13,9 @@
   "format_profile",
   "source_file",
   "line_count",
-  "ingest_log"
+  "ingest_log",
+  "invoice",
+  "invoice_status"
  ],
  "fields": [
   {
@@ -61,6 +63,24 @@
    "fieldname": "ingest_log",
    "fieldtype": "Long Text",
    "label": "Ingest Log",
+   "read_only": 1
+  },
+  {
+   "fieldname": "invoice",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Invoice",
+   "options": "Sales Invoice",
+   "read_only": 1
+  },
+  {
+   "fieldname": "invoice_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Invoice Status",
+   "options": "Not Invoiced\nDraft\nSubmitted\nCancelled",
+   "default": "Not Invoiced",
    "read_only": 1
   }
  ],

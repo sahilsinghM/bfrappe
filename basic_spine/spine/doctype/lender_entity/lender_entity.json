@@ -10,7 +10,11 @@
   "entity_name",
   "lender",
   "entity_type",
-  "gstin"
+  "is_active",
+  "gstin",
+  "pan",
+  "billing_address",
+  "erp_customer"
  ],
  "fields": [
   {
@@ -38,9 +42,34 @@
    "options": "\nBank\nHFC\nNBFC\nVertical"
   },
   {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "in_standard_filter": 1,
+   "label": "Is Active"
+  },
+  {
    "fieldname": "gstin",
    "fieldtype": "Data",
    "label": "GSTIN"
+  },
+  {
+   "fieldname": "pan",
+   "fieldtype": "Data",
+   "label": "PAN"
+  },
+  {
+   "fieldname": "billing_address",
+   "fieldtype": "Text",
+   "label": "Billing Address"
+  },
+  {
+   "description": "Linked ERPNext Customer — populated by Sync as Customer action",
+   "fieldname": "erp_customer",
+   "fieldtype": "Link",
+   "label": "ERP Customer",
+   "options": "Customer",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,

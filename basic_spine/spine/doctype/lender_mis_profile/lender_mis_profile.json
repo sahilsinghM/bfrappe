@@ -9,6 +9,8 @@
  "field_order": [
   "profile_name",
   "lender_entity",
+  "sender_email_domain",
+  "filename_pattern",
   "cycle_type",
   "window_start_day",
   "window_end_day",
@@ -34,6 +36,18 @@
    "label": "Lender Entity",
    "options": "Lender Entity",
    "reqd": 1
+  },
+  {
+   "description": "e.g. @cholamandalam.com — matched as suffix against the From address",
+   "fieldname": "sender_email_domain",
+   "fieldtype": "Data",
+   "label": "Sender Email Domain"
+  },
+  {
+   "description": "Regex matched against the attachment filename e.g. CHOLA.*\\.xlsx",
+   "fieldname": "filename_pattern",
+   "fieldtype": "Data",
+   "label": "Filename Pattern"
   },
   {
    "fieldname": "cycle_type",

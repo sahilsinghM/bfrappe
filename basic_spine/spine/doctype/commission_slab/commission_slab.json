@@ -1,0 +1,110 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "autoincrement",
+ "creation": "2026-06-13 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "lender_entity",
+  "product",
+  "sub_product",
+  "payout_type",
+  "top_rate",
+  "rate_formula",
+  "condition",
+  "processing_mode",
+  "basic_dsa_code"
+ ],
+ "fields": [
+  {
+   "fieldname": "lender_entity",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Lender Entity",
+   "options": "Lender Entity",
+   "reqd": 1
+  },
+  {
+   "fieldname": "product",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Product",
+   "options": "Product"
+  },
+  {
+   "description": "Lender-specific variant e.g. SME LAP, Viswas LAP, Connector HL",
+   "fieldname": "sub_product",
+   "fieldtype": "Data",
+   "label": "Sub Product"
+  },
+  {
+   "fieldname": "payout_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Payout Type",
+   "options": "\nNet\nGross"
+  },
+  {
+   "description": "Numeric rate in %; blank if formula-based",
+   "fieldname": "top_rate",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Top Rate (%)"
+  },
+  {
+   "description": "Formula string verbatim e.g. PF=Payout, 60% of PF",
+   "fieldname": "rate_formula",
+   "fieldtype": "Data",
+   "label": "Rate Formula"
+  },
+  {
+   "fieldname": "condition",
+   "fieldtype": "Long Text",
+   "label": "Condition"
+  },
+  {
+   "fieldname": "processing_mode",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Processing Mode",
+   "options": "\nCentral\nManual"
+  },
+  {
+   "description": "BASIC's DSA code at this lender for this product/agreement",
+   "fieldname": "basic_dsa_code",
+   "fieldtype": "Data",
+   "label": "BASIC DSA Code"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 0,
+ "links": [],
+ "modified": "2026-06-13 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Spine",
+ "name": "Commission Slab",
+ "naming_rule": "Autoincrement",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

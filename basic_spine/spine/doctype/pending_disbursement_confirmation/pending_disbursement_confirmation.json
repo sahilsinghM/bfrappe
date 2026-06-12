@@ -1,0 +1,110 @@
+{
+ "actions": [
+  {
+   "action": "link_and_confirm",
+   "action_label": "Link & Confirm",
+   "action_type": "Server Action"
+  }
+ ],
+ "allow_rename": 0,
+ "autoname": "autoincrement",
+ "creation": "2026-06-13 12:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "received_on",
+  "from_email",
+  "subject",
+  "raw_body",
+  "extracted_lan",
+  "extracted_amount",
+  "extracted_date",
+  "status",
+  "linked_disbursement"
+ ],
+ "fields": [
+  {
+   "fieldname": "received_on",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Received On",
+   "reqd": 1
+  },
+  {
+   "fieldname": "from_email",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "From Email"
+  },
+  {
+   "fieldname": "subject",
+   "fieldtype": "Data",
+   "label": "Subject"
+  },
+  {
+   "fieldname": "raw_body",
+   "fieldtype": "Long Text",
+   "label": "Raw Body"
+  },
+  {
+   "fieldname": "extracted_lan",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Extracted LAN"
+  },
+  {
+   "fieldname": "extracted_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Extracted Amount"
+  },
+  {
+   "fieldname": "extracted_date",
+   "fieldtype": "Date",
+   "label": "Extracted Date"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Pending\nLinked\nIgnored"
+  },
+  {
+   "fieldname": "linked_disbursement",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Linked Disbursement",
+   "options": "Reported Disbursement"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 0,
+ "links": [],
+ "modified": "2026-06-13 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Spine",
+ "name": "Pending Disbursement Confirmation",
+ "naming_rule": "Autoincrement",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
