@@ -24,8 +24,9 @@ bench --site <site> execute basic_spine.spine.setup.seed
 
 ## Data files
 
-Put input files in `prototype_data/` at the bench root (the directory is gitignored —
-real exports contain PII and must never be committed). To generate synthetic
+Put input files in `prototype_data/` under the bench's `sites/` directory — relative
+paths in `bench execute` resolve there (absolute paths work too). The directory is
+gitignored: real exports contain PII and must never be committed. To generate synthetic
 fixture files that exercise every documented edge case (zero-width ids, backslashed
 LANs, AU `L`/`HFT-` prefixes, drip-feed duplicate files, missing LANs):
 
