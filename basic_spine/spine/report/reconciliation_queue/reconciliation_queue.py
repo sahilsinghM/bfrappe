@@ -13,13 +13,17 @@ def execute(filters=None):
     filters = filters or {}
 
     conditions = ["bsl.match_status = 'Unmatched'", "bsl.credit > 0"]
+    values: dict = {}
 
     if filters.get("from_date"):
-        conditions.append(f"bsl.txn_date >= '{filters['from_date']}'")
+        conditions.append("bsl.txn_date >= %(from_date)s")
+        values["from_date"] = frappe.utils.getdate(filters["from_date"])
     if filters.get("to_date"):
-        conditions.append(f"bsl.txn_date <= '{filters['to_date']}'")
+        conditions.append("bsl.txn_date <= %(to_date)s")
+        values["to_date"] = frappe.utils.getdate(filters["to_date"])
     if filters.get("min_amount"):
-        conditions.append(f"bsl.credit >= {frappe.db.escape(str(filters['min_amount']))}")
+        conditions.append("bsl.credit >= %(min_amount)s")
+        values["min_amount"] = float(filters["min_amount"])
 
     where = " AND ".join(conditions)
 
@@ -39,6 +43,7 @@ def execute(filters=None):
         WHERE {where}
         ORDER BY bsl.txn_date DESC, bsl.credit DESC
         """,
+        values=values,
         as_dict=True,
     )
 
