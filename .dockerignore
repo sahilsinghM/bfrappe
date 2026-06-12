@@ -1,0 +1,10 @@
+.git
+.venv
+.pytest_cache
+__pycache__
+*.pyc
+*.egg-info
+prototype_data
+.env
+node_modules
+basic_spine/public/dist

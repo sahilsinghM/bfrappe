@@ -1,6 +1,9 @@
 # Real BASIC exports / lender MIS files contain PII — never commit them.
 prototype_data/
 
+# Local deployment secrets
+.env
+
 __pycache__/
 *.pyc
 *.egg-info/

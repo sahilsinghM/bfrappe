@@ -1,0 +1,129 @@
+# All Frappe services share a single image; only their command differs.
+# Build once with: docker compose build
+# First deploy: docker compose up -d && ./init-site.sh
+# Subsequent deploys: docker compose build && docker compose up -d
+
+services:
+
+  # ── Infrastructure ──────────────────────────────────────────────────────────
+
+  mariadb:
+    image: mariadb:10.6
+    restart: unless-stopped
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --skip-character-set-client-handshake
+      - --skip-innodb-read-only-compressed
+    healthcheck:
+      test: ["CMD", "mariadb-admin", "ping", "-h", "localhost",
+             "--password=${DB_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    volumes:
+      - mariadb-data:/var/lib/mysql
+
+  redis-cache:
+    image: redis:7-alpine
+    restart: unless-stopped
+
+  redis-queue:
+    image: redis:7-alpine
+    restart: unless-stopped
+
+  # ── Frappe services (all use the same custom image) ─────────────────────────
+
+  backend:
+    image: ${IMAGE:-basic-spine:latest}
+    build: .
+    pull_policy: never
+    restart: unless-stopped
+    environment:
+      DB_HOST: mariadb
+      DB_PORT: "3306"
+      REDIS_CACHE: redis-cache:6379
+      REDIS_QUEUE: redis-queue:6379
+    volumes:
+      - sites:/home/frappe/frappe-bench/sites
+    depends_on:
+      mariadb:
+        condition: service_healthy
+      redis-cache:
+        condition: service_started
+      redis-queue:
+        condition: service_started
+
+  frontend:
+    image: ${IMAGE:-basic-spine:latest}
+    pull_policy: never
+    restart: unless-stopped
+    command: nginx-entrypoint.sh
+    environment:
+      BACKEND: backend:8000
+      SOCKETIO: websocket:9000
+      FRAPPE_SITE_NAME_HEADER: ${SITE_NAME}
+      UPSTREAM_REAL_IP_ADDRESS: 127.0.0.1
+      UPSTREAM_REAL_IP_HEADER: X-Forwarded-For
+      PROXY_READ_TIMEOUT: "120"
+    volumes:
+      - sites:/home/frappe/frappe-bench/sites
+    ports:
+      - "${HTTP_PORT:-8080}:8080"
+    depends_on:
+      - backend
+      - websocket
+
+  websocket:
+    image: ${IMAGE:-basic-spine:latest}
+    pull_policy: never
+    restart: unless-stopped
+    command: node /home/frappe/frappe-bench/apps/frappe/socketio.js
+    environment:
+      REDIS_QUEUE: redis-queue:6379
+    volumes:
+      - sites:/home/frappe/frappe-bench/sites
+    depends_on:
+      - backend
+
+  queue-short:
+    image: ${IMAGE:-basic-spine:latest}
+    pull_policy: never
+    restart: unless-stopped
+    command: bench worker --queue short,default
+    environment:
+      REDIS_QUEUE: redis-queue:6379
+    volumes:
+      - sites:/home/frappe/frappe-bench/sites
+    depends_on:
+      - backend
+
+  queue-long:
+    image: ${IMAGE:-basic-spine:latest}
+    pull_policy: never
+    restart: unless-stopped
+    command: bench worker --queue long,default,short
+    environment:
+      REDIS_QUEUE: redis-queue:6379
+    volumes:
+      - sites:/home/frappe/frappe-bench/sites
+    depends_on:
+      - backend
+
+  scheduler:
+    image: ${IMAGE:-basic-spine:latest}
+    pull_policy: never
+    restart: unless-stopped
+    command: bench schedule
+    environment:
+      REDIS_QUEUE: redis-queue:6379
+    volumes:
+      - sites:/home/frappe/frappe-bench/sites
+    depends_on:
+      - backend
+
+volumes:
+  mariadb-data:
+  sites:
